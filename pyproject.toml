@@ -16,7 +16,8 @@ dependencies = [
     "pathlib",
     "pyyaml",
     "pandas",
-    "scikit-learn"
+    "scikit-learn",
+    "nltk"
 ]
 
 [tool.setuptools.packages.find]
