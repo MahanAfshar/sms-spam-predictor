@@ -5,9 +5,10 @@ PYTHON_VER = 3.10
 
 setup:
 	conda env create -n $(ENV_NAME) -f environment.yml
+	pip install -e .
 
 export-env:
-	conda env export -n $(ENV_NAME) --no-builds > environment.yml
+	conda env export -n $(ENV_NAME) --no-builds | grep -v "sms-spam-predictor" > environment.yml
 
 install:
 	conda install -n $(ENV_NAME) -y $(filter-out $@,$(MAKECMDGOALS))
