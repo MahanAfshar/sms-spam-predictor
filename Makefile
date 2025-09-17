@@ -6,9 +6,10 @@ PYTHON_VER = 3.10
 setup:
 	conda env create -n $(ENV_NAME) -f environment.yml
 	pip install -e .
+	python -m nltk.downloader stopwords punkt wordnet omw-1.4
 
 export-env:
-	conda env export -n $(ENV_NAME) --no-builds | grep -v "sms-spam-predictor" > environment.yml
+	conda env export -n $(ENV_NAME) --no-builds | grep -v "^\s*- sms-spam-predictor" | grep -v "^prefix:" > environment.yml
 
 install:
 	conda install -n $(ENV_NAME) -y $(filter-out $@,$(MAKECMDGOALS))
